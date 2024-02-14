@@ -3,15 +3,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType
 from pyspark import SparkContext
-
 import findspark
 findspark.init()
-
-import os
-os.environ['SPARK_HOME'] = "C:/spark-3.5.0-bin-hadoop3/spark-3.5.0-bin-hadoop3"
-os.environ['PYSPARK_DRIVER_PYTHON'] = 'jupyter'
-os.environ['PYSPARK_DRIVER_PYTHON_OPTS'] = 'lab'
-os.environ['PYSPARK_PYTHON'] = 'python'
 
 # Create Spark Session
 spark = SparkSession.builder.appName("firstApp").getOrCreate()
