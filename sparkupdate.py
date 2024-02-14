@@ -1,8 +1,9 @@
-# -- coding: utf-8 --
+# -*- coding: utf-8 -*-
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType
 from pyspark import SparkContext
+
 import findspark
 findspark.init()
 
