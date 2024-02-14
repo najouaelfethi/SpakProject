@@ -4,10 +4,13 @@ from pyspark.sql.types import IntegerType
 from pyspark import SparkContext
 
 def create_spark_session():
-    return SparkSession.builder.appName("firstApp").getOrCreate()
+    spark = SparkSession.builder.appName("firstApp").getOrCreate()
+    return spark
 
-def load_data(spark, file_path):
-    return spark.read.csv(file_path, header=True)
+def load_data(spark):
+    read_file = spark.read.csv(file_path, header=True)\
+              .option("path","hdfs:///user/maria_dev/spark/linkdin_Job_data.csv").load()
+    return read_file
 
 def clean_data(data):
     data = data.drop("Column1", "company_id", "posted_day_ago")
@@ -46,8 +49,7 @@ def actions_rdd(data_rdd,rdd2):
 if __name__ == "__main__":
     spark_session = create_spark_session()
 
-    file_path = "linkdin_Job_data.csv"
-    data = load_data(spark_session, file_path)
+    data = load_data(spark_session)
 
     cleaned_data = clean_data(data)
     analyse_data(cleaned_data)
