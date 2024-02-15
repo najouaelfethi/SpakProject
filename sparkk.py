@@ -5,12 +5,6 @@ from pyspark import SparkContext
 
 import findspark
 findspark.init()
-import os
-os.environ['SPARK_HOME'] = "/sparkhadoop/spark"
-os.environ['PYSPARK_DRIVER_PYTHON'] = 'jupyter'
-os.environ['PYSPARK_DRIVER_PYTHON_OPTS'] = 'lab'
-os.environ['PYSPARK_PYTHON'] = "/Users/info/AppData/Local/Programs/Python/Python312/python.exe"
-
 
 spark = SparkSession.builder.appName("firstApp").getOrCreate()
 
